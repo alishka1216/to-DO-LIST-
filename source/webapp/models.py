@@ -2,13 +2,11 @@ from django.db import models
 
 
 # Create your models here.
-
+STATUS_CHOICES = [('new', 'Новая'), ('in_progress', 'В процессе'),  ('done', 'Сделано')]
 class Article(models.Model):
-    title = models.CharField(max_length=120, null=False, blank=False)
-    content = models.TextField(max_length=3000, null=False, blank=False)
-    author = models.CharField(max_length=150, null=False, blank=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=3000, null=False, blank=False)
+    status = models.CharField(max_length=200, null=True, blank=True, choices=STATUS_CHOICES, default='new')
+    date = models.DateField(null=True, blank=True)
 
     class Meta:
         db_table = 'articles'

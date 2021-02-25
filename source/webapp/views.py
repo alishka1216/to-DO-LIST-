@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from webapp.models import Article
+from webapp.models import Article, STATUS_CHOICES
 
 
 def index_view(request):
@@ -25,11 +25,11 @@ def article_create_view(request):
     Представление для создания статьи
     """
     if request.method == "GET":  # Если метод запроса GET - будет отображена форма создания статьи
-        return render(request, 'article_create.html')
+        return render(request, 'article_create.html', context={'choices': STATUS_CHOICES})
     elif request.method == "POST":  # Если метод запроса POST - будет отображён шаблон просмотра деталей статьи
         title = request.POST.get("title")
-        content = request.POST.get("content")
-        author = request.POST.get("author")
+        content = request.POST.get("status")
+        author = request.POST.get("date")
 
         article = Article.objects.create(
             title=title,

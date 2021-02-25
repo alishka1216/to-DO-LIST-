@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <title>Create</title>
 </head>
-<body>
-<h1>Create Article</h1>
+<body><div style="background-color: lightskyblue; text-align: center">
+<h1>To do list!</h1>
 <form action="/articles/add/" method="post">
     {% csrf_token %}
-    <label>Title:</label><br/>
-    <input type="text" name="title"/><br/>
-    <label>Text:</label><br/>
-    <textarea name="content"></textarea><br/>
-    <label>Author:</label><br/>
-    <input type="text" name="author"/><br/>
+    <label>Describtion:</label><br/>
+    <textarea type="text" name="title"/></textarea><br/>
+    <label>Status:</label><br/>
+    <select name="status" id="" >
+        {% for choice in choices %}
+            <option>{{ choice.1 }}</option>
+        {% endfor %}
+    </select>
+    <br/>
+
+    <label>Date:</label><br/>
+    <input type="text" name="date" placeholder="yyyy-mm-dd"/><br/>
     <br/>
     <input type="submit" value="Send"/>
 </form>
+</div>
 </body>
 </html>
