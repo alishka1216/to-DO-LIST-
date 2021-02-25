@@ -28,13 +28,13 @@ def article_create_view(request):
         return render(request, 'article_create.html', context={'choices': STATUS_CHOICES})
     elif request.method == "POST":  # Если метод запроса POST - будет отображён шаблон просмотра деталей статьи
         title = request.POST.get("title")
-        content = request.POST.get("status")
-        author = request.POST.get("date")
+        status = request.POST.get("status")
+        date = request.POST.get("date")
 
         article = Article.objects.create(
             title=title,
-            content=content,
-            author=author
+            status=status,
+            author=date
         )
 
         return render(request, 'article_view.html', context={'article': article})
