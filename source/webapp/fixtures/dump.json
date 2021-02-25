@@ -1,0 +1,119 @@
+[
+{
+  "model": "webapp.article",
+  "pk": 1,
+  "fields": {
+    "title": "Title",
+    "status": "new",
+    "date": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 2,
+  "fields": {
+    "title": "Title text",
+    "status": "new",
+    "date": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 3,
+  "fields": {
+    "title": "sda",
+    "status": "new",
+    "date": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 4,
+  "fields": {
+    "title": "Описание дня",
+    "status": "new",
+    "date": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 5,
+  "fields": {
+    "title": "ОПИСАНИЕ",
+    "status": "new",
+    "date": "2021-02-25"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$OdXouNTwO2KK$U4OPVVbBgS6NjiL72BIYq2hNTcXxB0MBCr5AQLv5L7Q=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "lenovo",
+    "first_name": "",
+    "last_name": "",
+    "email": "alisher1216@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-02-25T09:18:05.151Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$joLRNDlM7T6N$MXixf0ToRDJJLzQ4Bv5PuKcb7oUnb25V93rJP9KPNVQ=",
+    "last_login": "2021-02-25T10:36:32.785Z",
+    "is_superuser": true,
+    "username": "alishka1216",
+    "first_name": "",
+    "last_name": "",
+    "email": "alishka1216@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-02-25T09:18:28.511Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$UeqYJ1YS7Jfl$UNu5O3V17ZbBtDeHmyBeciIVnPwJ95OpvOZdC3FmwUs=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "alishka",
+    "first_name": "",
+    "last_name": "",
+    "email": "alishka1216@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-02-25T09:20:44.120Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$mQbGWYEaDPA3$s2gAQyQHAZ+EcsP4q5MOxJYkL69+VJrA9YTNMZh0Uvg=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "ali",
+    "first_name": "",
+    "last_name": "",
+    "email": "alishka1216@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-02-25T09:22:53.390Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
