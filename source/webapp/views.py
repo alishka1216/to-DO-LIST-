@@ -34,7 +34,7 @@ def article_create_view(request):
         article = Article.objects.create(
             title=title,
             status=status,
-            author=date
+            date=date
         )
 
         return render(request, 'article_view.html', context={'article': article})
