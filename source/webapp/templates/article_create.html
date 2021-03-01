@@ -9,7 +9,9 @@
 <form action="/articles/add/" method="post">
     {% csrf_token %}
     <label>Describtion:</label><br/>
-    <textarea type="text" name="title"/></textarea><br/>
+    <textarea type="text" name="title"/></textarea></br>
+    <label>detailed_description:</label></br>
+    <textarea type="text" name="detailed_description"></textarea></br>
     <label>Status:</label><br/>
     <select name="status" id="" >
         {% for choice in choices %}
