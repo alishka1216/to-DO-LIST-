@@ -30,7 +30,7 @@ def article_create_view(request):
         return render(request, 'article_create.html', context={'choices': STATUS_CHOICES})
     elif request.method == "POST":  # Если метод запроса POST - будет отображён шаблон просмотра деталей статьи
         title = request.POST.get("title")
-        detailed_description = request.POST.get("detail_discrb")
+        detailed_description = request.POST.get("detail-discrption")
         status = request.POST.get("status")
         date = request.POST.get("date")
         if not date:
