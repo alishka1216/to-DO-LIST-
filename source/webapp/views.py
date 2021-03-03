@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from webapp.models import Article, STATUS_CHOICES
 
-
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
 
@@ -11,7 +10,8 @@ def index_view(request):
     Представление для отображения списка статей
     """
     articles = Article.objects.all()  # Получаем список статей из базы данных
-    return render(request, 'index.html', context={'articles': articles})  # Возвращаем "скомпилированный" шаблон с использованием переданного списка статей
+    return render(request, 'index.html', context={
+        'articles': articles})  # Возвращаем "скомпилированный" шаблон с использованием переданного списка статей
 
 
 def article_view(request, pk):
@@ -34,11 +34,11 @@ def article_create_view(request):
         status = request.POST.get("status")
         date = request.POST.get("date")
         if not date:
-            date=None
+            date = None
         if not detailed_description:
-            detailed_description=None
+            detailed_description = None
         if not title:
-            title=None
+            title = None
 
         article = Article.objects.create(
             title=title,
@@ -49,3 +49,11 @@ def article_create_view(request):
         )
 
         return redirect('article-view', pk=article.id)
+
+
+def article_update_view(request, pk):
+    article = get_object_or_404(Article, id=pk)
+    if request.method == 'GET':
+        return render(request, 'article_update.html', context={'article': article, 'choices': STATUS_CHOICES})
+    elif request.method == 'POST':
+        pass
