@@ -1,9 +1,10 @@
-
-
 {% extends "base.html" %}
+
+
 {% block content %}
-    <a href="{% url "article-add" %}">Создать статус</a>
-    <h1>Articles</h1>
+{#    <a href="{% url "article-add" %}">Создать статус</a>#}
+    {% include 'menu_element.html' with url_name='article-add' title='создать статус' %}
+    <h1>Задачи</h1>
     {% if not articles %}
         <h2>НЕТ СТАТЕЙ</h2>
     {% endif %}
