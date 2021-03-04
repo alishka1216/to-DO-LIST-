@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Вы уверены, что хотите удалить задачу? {{ article.title }}</h2>
+    <form action="{% url 'article-delete' article.id %}", method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Да">
+    </form>
+    <a href="{% url "article-view" article.id %}"> Отмена</a>
+{% endblock content %}
