@@ -3,6 +3,7 @@ from webapp.models import Article, STATUS_CHOICES
 
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
+from webapp.forms import ArticleForm
 
 
 def index_view(request):
@@ -27,33 +28,52 @@ def article_create_view(request):
     Представление для создания статьи
     """
     if request.method == "GET":  # Если метод запроса GET - будет отображена форма создания статьи
-        return render(request, 'article_create.html', context={'choices': STATUS_CHOICES})
+        form = ArticleForm()
+        return render(request, 'article_create.html', context={'form': form})
     elif request.method == "POST":  # Если метод запроса POST - будет отображён шаблон просмотра деталей статьи
-        title = request.POST.get("title")
-        detailed_description = request.POST.get("detail-discrption")
-        status = request.POST.get("status")
-        date = request.POST.get("date")
-        if not date:
-            date = None
-        if not detailed_description:
-            detailed_description = None
-        if not title:
-            title = None
+        form = ArticleForm(data=request.POST)
+        if form.is_valid():
+            article = Article.objects.create(
+                title=form.cleaned_data.get('title'),
+                status=form.cleaned_data.get('status'),
+                detailed_description=form.cleaned_data.get('detailed_description'),
+                date=form.cleaned_data.get('date')
+            )
+            article.save()
 
-        article = Article.objects.create(
-            title=title,
-            status=status,
-            detailed_description=detailed_description,
-            date=date
-
-        )
+        else:
+            return render(request, 'article_create.html', context={'form': form})
 
         return redirect('article-view', pk=article.id)
 
 
 def article_update_view(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'GET':
+        form = ArticleForm(initial={
+            'title': article.title,
+            'detail_description': article.detailed_description,
+            'status': article.status,
+            'date': article.date
+        })
+        return render(request, 'article_update.html', context={'form': form, 'article': article})
+    elif request.method == 'POST':
+        form = ArticleForm(data=request.POST)
+        if form.is_valid():
+            article.title = form.cleaned_data['title']
+            article.detailed_description = form.cleaned_data['detail_description']
+            article.status = form.cleaned_data['status']
+            article.date = form.cleaned_data['date']
+            article.save()
+            return redirect('article_view', pk=article.pk)
+        else:
+            return render(request, 'update.html', context={'form': form, 'article': article})
+
+
+def article_delete_view(request, pk):
     article = get_object_or_404(Article, id=pk)
     if request.method == 'GET':
-        return render(request, 'article_update.html', context={'article': article, 'choices': STATUS_CHOICES})
+        return render(request, 'article_delete.html', context={'article': article})
     elif request.method == 'POST':
-        pass
+        article.delete()
+    return redirect('article-list')
