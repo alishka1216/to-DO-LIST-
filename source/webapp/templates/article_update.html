@@ -2,27 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Редактировать задачу {{ article.id }}</title>
+    <title>change</title>
 </head>
 <body><div style="background-color: lightskyblue; text-align: center">
-<form action="{% url "article_update" article.id %}" method="post">
-    {% csrf_token %}
-    <label>Title:</label><br/>
-    <input type="text" name="title" value={{ article.title }}/></br>
-    <label>detailed_description:</label></br>
-    <textarea type="content">{{ article.detailed_description }}</textarea></br>
-    <label>Status:</label><br/>
-    <select name="status" value={{ article.status }} id="" >
-        {% for choice in choices %}
-            <option>{{ choice.1 }}</option>
-        {% endfor %}
-    </select>
-    <br/>
-
-    <label>Date:</label><br/>
-    <input type="text" name="date" placeholder="yyyy-mm-dd"/><br/>
-    <br/>
-    <input type="submit" value="Send"/>
+<h1>To do list!</h1>
+<form action="/articles/add/" method="post">
+    {% include "article_form.html" with button_text='change' %}
 </form>
 </div>
 </body>
