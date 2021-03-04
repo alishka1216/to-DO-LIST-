@@ -7,23 +7,7 @@
 <body><div style="background-color: lightskyblue; text-align: center">
 <h1>To do list!</h1>
 <form action="/articles/add/" method="post">
-    {% csrf_token %}
-    <label>Describtion:</label><br/>
-    <textarea type="text" name="title"/></textarea></br>
-    <label>detailed_description:</label></br>
-    <textarea type="text" name="detailed_description"></textarea></br>
-    <label>Status:</label><br/>
-    <select name="status" id="" >
-        {% for choice in choices %}
-            <option>{{ choice.1 }}</option>
-        {% endfor %}
-    </select>
-    <br/>
-
-    <label>Date:</label><br/>
-    <input type="text" name="date" placeholder="yyyy-mm-dd"/><br/>
-    <br/>
-    <input type="submit" value="Send"/>
+    {% include "article_form.html" with button_text='Send' %}
 </form>
 </div>
 </body>
